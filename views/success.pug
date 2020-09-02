@@ -1,0 +1,7 @@
+extends layout
+
+block content
+
+if (user) h2=user.name
+
+a(href='/auth/logout') logout
