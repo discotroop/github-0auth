@@ -9,6 +9,13 @@ var router = express.Router();
 var indexRouter = require("./routes/index");
 var usersRouter = require("./routes/users");
 
+// HERE
+// IS
+// THE
+// WAY
+// ?
+// https://www.youtube.com/watch?v=wcUdBgktd4s
+
 var bodyParser = require("body-parser");
 var cors = require("cors");
 var passport = require("passport");
