@@ -17,6 +17,8 @@ var usersRouter = require("./routes/users");
 // ?
 // https://www.youtube.com/watch?v=wcUdBgktd4s
 
+// mongodb+srv://CoffeCoding:process.env.DB_PASSWORD@cluster0.y5fzl.mongodb.net/process.env.DB_NAME?retryWrites=true&w=majority
+
 var bodyParser = require("body-parser");
 var cors = require("cors");
 var passport = require("passport");
