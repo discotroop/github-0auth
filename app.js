@@ -33,11 +33,7 @@ let session = require("express-session");
 
 // graphql to pull user data https://medium.com/@wangyonglin1999/how-to-use-githubs-graphql-api-with-express-js-efd927aa9edc
 // environmental vars to keep things secret https://medium.com/codait/environment-variables-or-keeping-your-secrets-secret-in-a-node-js-app-99019dfff716
-
-// Client ID
-//     163f60273a1723c1dc1b
-// Client Secret
-//     1155d3dba48d06dd847b9768a3df09fd2598e1bf
+// gh documentation https://developer.github.com/apps/building-oauth-apps/authorizing-oauth-apps/
 
 /** passport setup */
 passport.use(
@@ -55,6 +51,7 @@ passport.use(
 );
 
 passport.serializeUser(function(user, cb) {
+  console.log("serialized user", user);
   cb(null, user);
 });
 
