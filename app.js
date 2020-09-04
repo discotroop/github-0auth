@@ -24,6 +24,13 @@ var Strategy = pg.Strategy;
 
 let session = require("express-session");
 
+// 1 passport gets git login
+// 2 git info is saved to a user for my sight (tokens etc.)
+// 3 use said tokens to query api for commit history
+
+// graphql to pull user data https://medium.com/@wangyonglin1999/how-to-use-githubs-graphql-api-with-express-js-efd927aa9edc
+// environmental vars to keep things secret https://medium.com/codait/environment-variables-or-keeping-your-secrets-secret-in-a-node-js-app-99019dfff716
+
 // Client ID
 //     163f60273a1723c1dc1b
 // Client Secret
@@ -110,8 +117,8 @@ app.get("/", function(req, res, next) {
 });
 
 app.get("/account", isAuthenticated, (req, res) => {
-  console.log("user", req.user.__json);
-  res.render("success", { user: req.user._json });
+  console.log("user", req.user);
+  res.render("success", { user: req.user.username });
 });
 
 app.get(
