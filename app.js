@@ -38,6 +38,7 @@ passport.use(
       callbackURL: "http://localhost:3000/auth/github/callback"
     },
     function(accessToken, refreshToken, user, cb) {
+      console.log(accessToken);
       return cb(null, user);
     }
   )
@@ -74,11 +75,6 @@ app.use(
   })
 );
 
-// catch 404 and forward to error handler
-app.use(function(req, res, next) {
-  next(createError(404));
-});
-
 // error handler
 app.use(function(err, req, res, next) {
   // set locals, only providing error in development
@@ -114,16 +110,22 @@ app.get("/", function(req, res, next) {
 });
 
 app.get("/account", isAuthenticated, (req, res) => {
+  console.log("user", req.user.__json);
   res.render("success", { user: req.user._json });
 });
 
 app.get(
   "/auth/github",
-  passport.authenticate("github", { scope: ["user:email"] })
+  passport.authenticate("github", {
+    scope: ["user:email"],
+    successRedirect: "/account",
+    failureRedirect: "/",
+    session: false
+  })
 );
 
 app.get(
-  "auth/github/callback",
+  "/auth/github/callback",
   passport.authenticate("github", {
     successRedirect: "/account",
     failureRedirect: "/"
