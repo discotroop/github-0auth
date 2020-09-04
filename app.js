@@ -1,3 +1,4 @@
+const dotenv = require("dotenv").config();
 var createError = require("http-errors");
 var express = require("express");
 var path = require("path");
@@ -40,8 +41,8 @@ let session = require("express-session");
 passport.use(
   new Strategy(
     {
-      clientID: "163f60273a1723c1dc1b",
-      clientSecret: "1155d3dba48d06dd847b9768a3df09fd2598e1bf",
+      clientID: process.env.CLIENT_ID,
+      clientSecret: process.env.CLIENT_SECRET,
       callbackURL: "http://localhost:3000/auth/github/callback"
     },
     function(accessToken, refreshToken, user, cb) {
